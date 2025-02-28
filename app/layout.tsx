@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "@repo/ui/globals.css";
-import { Inter } from "next/font/google"
 import Header from "@repo/ui/components/Header"
 import Footer from "@repo/ui/components/Footer"
 import type React from "react" // Added import for React
@@ -20,7 +19,6 @@ export const metadata = {
   description: "Professional cloud solutions for your business",
 }
 
-const inter = Inter({ subsets: ["latin"] })
 
 
 
