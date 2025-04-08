@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-
+  output: "standalone",
   //commented this part due to circular dependancy
   // async rewrites() {
   //   return [
@@ -23,7 +23,8 @@ const nextConfig: NextConfig = {
 
   //assetPrefix is need to get static asset of blog on rewrite from site 
   //during production mode
-  assetPrefix: "/blog",
+  // assetPrefix: "/blog",
+    basePath: "/blog",
   reactStrictMode: true,
 };
 
