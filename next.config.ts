@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
 
   //assetPrefix is need to get static asset of blog on rewrite from site 
   //during production mode
-  assetPrefix: "/blog",
+  assetPrefix: "/en/blog",
   // basePath: "/blog",
   reactStrictMode: true,
 };
