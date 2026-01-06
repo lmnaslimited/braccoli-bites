@@ -1,10 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from 'geist/font/sans';
 import "@repo/ui/globals.css"
+import { GeistSans } from 'geist/font/sans';
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import { clTransformerFactory, Tcontext, TglobalMetaTarget, TseoIcons } from "@repo/middleware";
-import { fnGetCacheData } from "./api/getData";
+import { fnGetCacheData } from "./api/strapi/get-data";
+import { clTransformerFactory } from "@repo/middleware";
+import { Tcontext, TglobalMetaTarget, TseoIcons } from "@repo/middleware/types";
 
 async function fnGetGlobalData(locale: string) {
   const context: Tcontext = { locale }
@@ -63,7 +64,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     manifest: data.manifest,
     alternates: {
-            canonical: "https://lmnas.com/en/blog",
+      canonical: "https://lmnas.com/en/blog",
     },
   }
 }
