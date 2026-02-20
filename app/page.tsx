@@ -1,10 +1,9 @@
-import { Tcontext } from "@repo/middleware";
+import { fnGetCacheData } from "./api/strapi/get-data";
 import Footer from "@repo/ui/components/footer";
 import Navbar from "@repo/ui/components/navbar";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { TfooterTarget, TnavbarTarget } from "@repo/middleware";
 import { clTransformerFactory } from "@repo/middleware";
-import { fnGetCacheData } from "./api/getData";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import { Tcontext, TfooterTarget, TnavbarTarget } from "@repo/middleware/types";
 
 const HeroData = {
   heading: {
