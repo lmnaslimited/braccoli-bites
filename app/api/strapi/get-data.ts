@@ -1,14 +1,6 @@
 import { unstable_cache } from "next/cache"
-import { ITransformer } from "@repo/middleware/types"
+import { ITransformer, Tcontext } from "@repo/middleware/types"
 
-export type Tcontext = {
-  locale: string
-  filters?: {
-    slug: {
-      eq: string
-    }
-  }
-}
 const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>()
 
 export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
