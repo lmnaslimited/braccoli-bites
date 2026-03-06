@@ -20,7 +20,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(
       async () => {
-        const pageData: DynamicTargetType = await transformer.execute(iContext)
+        const pageData: DynamicTargetType = await transformer.fnExecute(iContext)
         return pageData
       },
       [LCacheKey],

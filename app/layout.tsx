@@ -12,7 +12,7 @@ async function fnGetGlobalData(locale: string) {
 
   const globalMetaData: TglobalMetaTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer("globalMeta")
+    clTransformerFactory.fnCreateTransformer("globalMeta")
   )
 
   return globalMetaData?.globalMeta

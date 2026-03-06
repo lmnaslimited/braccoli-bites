@@ -22,12 +22,12 @@ export default async function Blog({
   const context: Tcontext = { locale: locale }
   const footerData: TfooterTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('footer')
+    clTransformerFactory.fnCreateTransformer('footer')
   );
 
   const navbarData: TnavbarTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('navbar')
+    clTransformerFactory.fnCreateTransformer('navbar')
   );
   return (
     <div >
