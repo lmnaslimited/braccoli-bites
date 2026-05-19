@@ -16,7 +16,6 @@ export function CategoryFilter({
 }: CategoryFilterProps) {
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="font-semibold text-foreground">Categories</h3>
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => onCategoryChange(null)}

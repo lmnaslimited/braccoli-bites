@@ -26,6 +26,16 @@ const nextConfig: NextConfig = {
   assetPrefix: "/en/blog",
   // basePath: "/blog",
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "https", hostname: "raw.githubusercontent.com"},
+      { protocol: "https", hostname: "i.ytimg.com" },
+      { protocol: "https", hostname: "img.youtube.com" },
+      { protocol: "https", hostname: "pbs.twimg.com" },
+      { protocol: "https", hostname: "media.licdn.com" },
+    ],
+  },
 };
 
 export default nextConfig;

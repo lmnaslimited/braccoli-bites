@@ -5,49 +5,63 @@ import { useMemo, useState } from 'react'
 import { BlogCard } from '../blog/blog-card'
 import { CategoryFilter } from '../blog/category-filter'
 
-const categories = [
-  { id: 'technology', name: 'Technology', slug: 'technology' },
-  { id: 'ai', name: 'AI', slug: 'ai' },
-  { id: 'cloud', name: 'Cloud', slug: 'cloud' },
-]
+import type {TblogPageSource } from '@repo/middleware/types'
 
-const posts = [
-  {
-    title: 'Sample Blog Post',
-    description: 'This is a sample blog post description.',
-    slug: 'sample-blog-post',
-    category: 'Technology',
-    author: 'John Doe',
-    date: '2023-10-01',
-  },
-  {
-    title: 'AI Manufacturing Intelligence',
-    description: 'Enterprise AI transformation strategies.',
-    slug: 'ai-manufacturing',
-    category: 'AI',
-    author: 'LMNAs',
-    date: '2024-01-15',
-  },
-]
+type TProps = {
+  blogs: TblogPageSource
+}
 
-export function BlogSection() {
+export function BlogSection({ blogs }: TProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
+  // Generate categories dynamically from blogs
+  const categories = useMemo(() => {
+    const laCategories = Array.from(
+      new Set(
+        blogs.blogs.map((blog) => blog.blogHeader.category)
+      )
+    )
+
+    return laCategories.map((category) => ({
+      id: category.toLowerCase(),
+      name: category,
+      slug: category.toLowerCase(),
+    }))
+  }, [blogs])
+
+  // Transform Strapi data
+  const formattedPosts = useMemo(() => {
+    return blogs.blogs.map((blog) => ({
+      title: blog.blogHeader.blogTitle,
+      description: blog.blogHeader.blogExert,
+      slug: blog.blogHeader.blogTitle
+        .toLowerCase()
+        .replace(/\s+/g, '-'),
+      category: blog.blogHeader.category,
+      author: blog.blogHeader.author,
+      date: blog.blogHeader.publishingDate,
+      image: {
+        src: blog.blogHeader.image,
+        alt: blog.blogHeader.blogTitle,
+      },
+    }))
+  }, [blogs])
+
   const filteredPosts = useMemo(() => {
-    if (!selectedCategory) return posts
+    if (!selectedCategory) return formattedPosts
 
     const category = categories.find(
       (c) => c.id === selectedCategory
     )
 
-    return posts.filter(
+    return formattedPosts.filter(
       (post) => post.category === category?.name
     )
-  }, [selectedCategory])
+  }, [selectedCategory, formattedPosts, categories])
 
   return (
-    <div className="space-y-10">
-      <CategoryFilter
+<div className="w-full space-y-10 py-10 text-foreground">  
+   <CategoryFilter
         categories={categories}
         selectedCategory={selectedCategory || undefined}
         onCategoryChange={setSelectedCategory}
