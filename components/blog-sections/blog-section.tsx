@@ -34,9 +34,7 @@ export function BlogSection({ blogs }: TProps) {
     return blogs.blogs.map((blog) => ({
       title: blog.blogHeader.blogTitle,
       description: blog.blogHeader.blogExert,
-      slug: blog.blogHeader.blogTitle
-        .toLowerCase()
-        .replace(/\s+/g, '-'),
+      slug: blog.blogHeader.slug,
       category: blog.blogHeader.category,
       author: blog.blogHeader.author,
       date: blog.blogHeader.publishingDate,

@@ -1,10 +1,15 @@
 'use client'
+
 import { cn } from '@repo/ui/lib/utils'
-import type { Category } from '../../lib/types'
+
+type Category = {
+  id: string
+  name: string
+  slug?: string
+}
 
 interface CategoryFilterProps {
   categories: Category[]
-
   selectedCategory?: string
   onCategoryChange: (categoryId: string | null) => void
 }
@@ -28,6 +33,7 @@ export function CategoryFilter({
         >
           All
         </button>
+
         {categories.map((category) => (
           <button
             key={category.id}

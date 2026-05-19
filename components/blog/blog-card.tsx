@@ -1,21 +1,21 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { cn } from '@repo/ui/lib/utils'
-import { formatDate } from '../../lib/utils/date'
+import Image from "next/image";
+import Link from "next/link";
+import { cn } from "@repo/ui/lib/utils";
+import { formatDate } from "../../lib/utils/date";
 
 interface BlogCardProps {
-  title: string
-  description: string
-  slug: string
-  category: string
-  author: string
-  date: string
+  title: string;
+  description: string;
+  slug: string;
+  category: string;
+  author: string;
+  date: string;
   image?: {
-    src: string
-    alt: string
-  }
-  featured?: boolean
-  className?: string
+    src: string;
+    alt: string;
+  };
+  featured?: boolean;
+  className?: string;
 }
 
 export function BlogCard({
@@ -29,23 +29,27 @@ export function BlogCard({
   featured = false,
   className,
 }: BlogCardProps) {
-  const href = `/article/${slug}`
+  const href = `/article/${slug}`;
 
   return (
     <Link href={href}>
       <article
         className={cn(
-          'group h-full rounded-lg overflow-hidden border border-border bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-300 hover:border-accent/50 hover:shadow-lg',
-          featured && 'md:col-span-2 md:grid md:grid-cols-2 gap-6',
-          className
+          "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/80 dark:border-white/10 bg-background transition-all duration-300 hover:border-border hover:shadow-md",
+          featured && "md:col-span-2 md:grid md:grid-cols-2 gap-6",
+          className,
         )}
       >
         {/* Image Container */}
         {image && (
-          <div className={cn(
-            'relative overflow-hidden bg-muted',
-            featured ? 'aspect-video md:aspect-auto md:h-full' : 'aspect-video'
-          )}>
+          <div
+            className={cn(
+              "relative overflow-hidden bg-muted",
+              featured
+                ? "aspect-video md:aspect-auto md:h-full"
+                : "aspect-video",
+            )}
+          >
             <Image
               src={image.src}
               alt={image.alt}
@@ -56,35 +60,43 @@ export function BlogCard({
         )}
 
         {/* Content Container */}
-        <div className={cn(
-          'p-6 flex flex-col gap-4',
-          featured && 'md:py-0 md:pr-0'
-        )}>
+        <div
+          className={cn(
+            "flex flex-1 flex-col gap-5 p-6",
+            featured && "md:py-0 md:pr-0",
+          )}
+        >
           {/* Category Badge */}
-          <div className="flex gap-2">
-            <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
+          <div className="flex items-center gap-2">
+            {" "}
+            <span className="inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+              {" "}
               {category}
             </span>
           </div>
 
           {/* Title */}
-          <h3 className={cn(
-            'font-bold leading-tight text-foreground group-hover:text-accent transition-colors',
-            featured ? 'text-3xl md:text-4xl' : 'text-xl'
-          )}>
+          <h3
+            className={cn(
+              "line-clamp-2 font-semibold tracking-tight text-foreground transition-colors duration-300",
+              featured ? "text-3xl md:text-4xl" : "text-xl",
+            )}
+          >
             {title}
           </h3>
 
           {/* Description */}
-          <p className="text-sm md:text-base text-muted-foreground line-clamp-2">
+          <p className="text-sm md:text-base text-muted-foreground/80 line-clamp-2">
             {description}
           </p>
 
           {/* Meta Footer */}
-          <div className={cn(
-            'flex items-center justify-between pt-4 border-t border-border/50 mt-auto',
-            featured && 'md:pt-8'
-          )}>
+          <div
+            className={cn(
+              "flex items-center justify-between pt-4 border-t border-border/50 mt-auto",
+              featured && "md:pt-8",
+            )}
+          >
             <div className="flex flex-col gap-1">
               <p className="text-xs font-semibold text-foreground">{author}</p>
               <p className="text-xs text-muted-foreground">
@@ -108,5 +120,5 @@ export function BlogCard({
         </div>
       </article>
     </Link>
-  )
+  );
 }

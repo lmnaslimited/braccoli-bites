@@ -1,9 +1,9 @@
 // 'use client'
-import { fnGetCacheData } from "./api/strapi/get-data";
+import { fnGetCacheData } from "../api/strapi/get-data";
 import Footer from "@repo/ui/components/footer";
 import Navbar from "@repo/ui/components/navbar";
 import { clTransformerFactory } from "@repo/middleware";
-
+import { fnGetStatus } from "@/lib/utils/get-status";
 // import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import {
   TblogPageTarget,
@@ -12,38 +12,32 @@ import {
   TnavbarTarget,
 } from "@repo/middleware/types";
 // import ArticleContent from "./components/article";
-import { BlogSection } from "../components/blog-sections/blog-section";
-import { Hero } from "./ui/hero";
+import { BlogSection } from "../../components/blog-sections/blog-section";
+import { Hero } from "../ui/hero";
 
-// const HeroData = {
-//   heading: {
-//     textWithoutColor: "Blog Coming Soon...",
-//     subtitle: "Stay Tuned for Exciting Updates!"
-//   }
-// }
-
-// Mock featured article
-
-export default async function Blog({
-  params,
-}: {
-  params: Promise<{
-    locale: string;
-  }>;
-}) {
+export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const context: Tcontext = { locale: locale };
-  const footerData: TfooterTarget = await fnGetCacheData(
+
+  const LStatus = await fnGetStatus();
+  const LdBlogcontext: Tcontext = {
+    locale: locale,
+    status: LStatus,
+    blogsLocale2: locale,
+    blogsStatus2: LStatus,
+  };
+
+  const LdfooterData: TfooterTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer("footer"),
   );
 
   const LdblogHomeData: TblogPageTarget = await fnGetCacheData(
-    context,
+    LdBlogcontext,
     clTransformerFactory.createTransformer("blogHome"),
   );
 
-  console.log("LdblogHomeData", LdblogHomeData);
+  console.log("LdblogHomeData", LdBlogcontext, LdblogHomeData);
 
   const navbarData: TnavbarTarget = await fnGetCacheData(
     context,
@@ -59,7 +53,7 @@ export default async function Blog({
           {/* <TitleSubtitle idTitle={HeroData.heading} /> */}
         </div>
       </section>
-      <Footer idFooter={footerData} />
+      <Footer idFooter={LdfooterData} />
     </div>
   );
 }

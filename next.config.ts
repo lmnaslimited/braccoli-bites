@@ -23,7 +23,27 @@ const nextConfig: NextConfig = {
 
   //assetPrefix is need to get static asset of blog on rewrite from site 
   //during production mode
-  assetPrefix: "/en/blog",
+//  reactStrictMode: true,
+assetPrefix: "/blog-static",
+
+  // assetPrefix:
+  //   process.env.NODE_ENV === "development"
+  //     ? "http://localhost:3001"
+  //     : undefined,
+
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/_next/static/:path*",
+  //       headers: [
+  //         {
+  //           key: "Access-Control-Allow-Origin",
+  //           value: "*",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
   // basePath: "/blog",
   reactStrictMode: true,
   images: {

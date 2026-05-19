@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import "@repo/ui/globals.css"
 import { GeistSans } from 'geist/font/sans';
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import { fnGetCacheData } from "./api/strapi/get-data";
+import { fnGetCacheData } from "../api/strapi/get-data";
 import { clTransformerFactory } from "@repo/middleware";
 import { Tcontext, TglobalMetaTarget, TseoIcons } from "@repo/middleware/types";
 

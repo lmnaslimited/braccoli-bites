@@ -8,16 +8,16 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   iContext: Tcontext,
   transformer: ITransformer<DynamicSourceType, DynamicTargetType>,
 ) {
-  const locale = iContext?.locale ?? "en"
+  const LLocale = iContext?.locale ?? "en"
 
-  let slug
+  let LSlug
   if (iContext?.filters?.slug?.eq) {
-    slug = iContext.filters.slug.eq
+    LSlug = iContext.filters.slug.eq
   }
 
-  const LCacheKey = slug
-    ? `${transformer.contentType}-${locale}-${slug}`
-    : `${transformer.contentType}-${locale}`
+  const LCacheKey = LSlug
+    ? `${transformer.contentType}-${LLocale}-${LSlug}`
+    : `${transformer.contentType}-${LLocale}`
   if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(
       async () => {
@@ -27,7 +27,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
       [LCacheKey],
       {
         revalidate: 3600,
-        tags: slug ? [LCacheKey, locale, slug] : [LCacheKey, locale],
+        tags: LSlug ? [LCacheKey, LLocale, LSlug] : [LCacheKey, LLocale],
       },
     )
     LdCacheMap.set(LCacheKey, fetcher)
