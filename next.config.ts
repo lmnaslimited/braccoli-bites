@@ -23,27 +23,9 @@ const nextConfig: NextConfig = {
 
   //assetPrefix is need to get static asset of blog on rewrite from site 
   //during production mode
-//  reactStrictMode: true,
+  // assetPrefix: "/en/blog",
+ //css and js files are not loading in production mode due to basePath, so commenting basePath and adding assetPrefix to load static assets from blog-static folder 
 assetPrefix: "/blog-static",
-
-  // assetPrefix:
-  //   process.env.NODE_ENV === "development"
-  //     ? "http://localhost:3001"
-  //     : undefined,
-
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/_next/static/:path*",
-  //       headers: [
-  //         {
-  //           key: "Access-Control-Allow-Origin",
-  //           value: "*",
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
   // basePath: "/blog",
   reactStrictMode: true,
   images: {
