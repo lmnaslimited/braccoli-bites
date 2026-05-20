@@ -1,26 +1,25 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { cn } from '@repo/ui/lib/utils'
-import { formatDate } from '../../lib/utils/date'
-import { Tblog } from '@repo/middleware/types'
-
+import Image from "next/image";
+import Link from "next/link";
+import { cn } from "@repo/ui/lib/utils";
+import { formatDate } from "../../lib/utils/date";
+import { Tblog } from "@repo/middleware/types";
 
 //blog card component to display the blog post in the blog section
 export function BlogCard({
-  idBlogCardProps
+  idBlogCardProps,
 }: {
-  idBlogCardProps: Tblog["blogHeader"]
+  idBlogCardProps: Tblog["blogHeader"];
 }) {
-  const href = `/${idBlogCardProps.slug}`
+  // const href = `/${locale}/blog/${slug}`;
 
   return (
-    <Link href={href}>
+    <Link href="/">
       <article
         className={cn(
-          'group relative flex h-full flex-col overflow-hidden rounded-2xl',
-          'border border-border/80 dark:border-white/10',
-          'bg-background transition-all duration-300',
-          'hover:border-border hover:shadow-md'
+          "group relative flex h-full flex-col overflow-hidden rounded-2xl",
+          "border border-border/80 dark:border-white/10",
+          "bg-background transition-all duration-300",
+          "hover:border-border hover:shadow-md",
         )}
       >
         {/* Image */}
@@ -47,8 +46,8 @@ export function BlogCard({
           {/* Title */}
           <h3
             className={cn(
-              'line-clamp-2 text-xl font-semibold tracking-tight',
-              'text-foreground transition-colors duration-300'
+              "line-clamp-2 text-xl font-semibold tracking-tight",
+              "text-foreground transition-colors duration-300",
             )}
           >
             {idBlogCardProps.blogTitle}
@@ -61,14 +60,25 @@ export function BlogCard({
 
           {/* Footer */}
           <div className="mt-auto flex items-center justify-between border-t border-border/50 pt-4">
-            <div className="flex flex-col gap-1">
-              <p className="text-xs font-semibold text-foreground">
-                {idBlogCardProps.author}
-              </p>
+            <div className="flex items-center gap-3">
+              <div className="relative h-9 w-9 overflow-hidden rounded-full">
+                {/* <Image
+                  src={idBlogCardProps.authorImage || "/default-avatar.png"}
+                  alt={idBlogCardProps.author}
+                  fill
+                  className="object-cover"
+                /> */}
+              </div>
 
-              <p className="text-xs text-muted-foreground">
-                {formatDate(idBlogCardProps.publishingDate)}
-              </p>
+              <div className="flex flex-col gap-1">
+                <p className="text-xs font-semibold text-foreground">
+                  {idBlogCardProps.author}
+                </p>
+
+                <p className="text-xs text-muted-foreground">
+                  {formatDate(idBlogCardProps.publishingDate || "")}
+                </p>
+              </div>
             </div>
 
             <svg
@@ -88,5 +98,5 @@ export function BlogCard({
         </div>
       </article>
     </Link>
-  )
+  );
 }
