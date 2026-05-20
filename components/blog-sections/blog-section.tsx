@@ -31,18 +31,7 @@ export function BlogSection({ blogs }: TProps) {
 
   // Transform Strapi data
   const formattedPosts = useMemo(() => {
-    return blogs.blogs.map((blog) => ({
-      title: blog.blogHeader.blogTitle,
-      description: blog.blogHeader.blogExert,
-      slug: blog.blogHeader.slug,
-      category: blog.blogHeader.category,
-      author: blog.blogHeader.author,
-      date: blog.blogHeader.publishingDate,
-      image: {
-        src: blog.blogHeader.image,
-        alt: blog.blogHeader.blogTitle,
-      },
-    }))
+    return blogs.blogs
   }, [blogs])
 
   const filteredPosts = useMemo(() => {
@@ -53,7 +42,7 @@ export function BlogSection({ blogs }: TProps) {
     )
 
     return formattedPosts.filter(
-      (post) => post.category === category?.name
+      (post) => post.blogHeader.category === category?.name
     )
   }, [selectedCategory, formattedPosts, categories])
 
@@ -68,8 +57,8 @@ export function BlogSection({ blogs }: TProps) {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredPosts.map((post) => (
           <BlogCard
-            key={post.slug}
-            {...post}
+            key={post.blogHeader.slug}
+            idBlogCardProps={post.blogHeader}
           />
         ))}
       </div>

@@ -11,13 +11,12 @@ import {
   TfooterTarget,
   TnavbarTarget,
 } from "@repo/middleware/types";
-// import ArticleContent from "./components/article";
 import { BlogSection } from "../../components/blog-sections/blog-section";
 import { Hero } from "../ui/hero";
 
 export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const context: Tcontext = { locale: locale };
+  const LdContext: Tcontext = { locale: locale };
 
   const LStatus = await fnGetStatus();
   const LdBlogcontext: Tcontext = {
@@ -28,7 +27,7 @@ export default async function Blog({ params }: { params: Promise<{ locale: strin
   };
 
   const LdfooterData: TfooterTarget = await fnGetCacheData(
-    context,
+    LdContext,
     clTransformerFactory.createTransformer("footer"),
   );
 
@@ -37,15 +36,13 @@ export default async function Blog({ params }: { params: Promise<{ locale: strin
     clTransformerFactory.createTransformer("blogHome"),
   );
 
-  console.log("LdblogHomeData", LdBlogcontext, LdblogHomeData);
-
-  const navbarData: TnavbarTarget = await fnGetCacheData(
-    context,
+  const LdnavbarData: TnavbarTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.createTransformer("navbar"),
   );
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar idNavbar={navbarData} />
+      <Navbar idNavbar={LdnavbarData} />
       <section className="border-b border-border/40 bg-background py-20 text-foreground transition-colors duration-300">
         <div className="container mx-auto px-4 md:px-6">
           <Hero idProps={LdblogHomeData} />
