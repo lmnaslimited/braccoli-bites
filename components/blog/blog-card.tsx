@@ -4,6 +4,8 @@ import { cn } from '@repo/ui/lib/utils'
 import { formatDate } from '../../lib/utils/date'
 import { Tblog } from '@repo/middleware/types'
 
+
+//blog card component to display the blog post in the blog section
 export function BlogCard({
   idBlogCardProps
 }: {

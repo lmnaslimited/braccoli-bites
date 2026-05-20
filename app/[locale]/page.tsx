@@ -19,6 +19,7 @@ export default async function Blog({ params }: { params: Promise<{ locale: strin
   const LdContext: Tcontext = { locale: locale };
 
   const LStatus = await fnGetStatus();
+  // Context for Blog Page - includes locale and status for fetching blog-specific data
   const LdBlogcontext: Tcontext = {
     locale: locale,
     status: LStatus,
@@ -30,7 +31,7 @@ export default async function Blog({ params }: { params: Promise<{ locale: strin
     LdContext,
     clTransformerFactory.createTransformer("footer"),
   );
-
+  // Fetching blog home data using the blog-specific context to ensure we get the correct localized and status-filtered content
   const LdblogHomeData: TblogPageTarget = await fnGetCacheData(
     LdBlogcontext,
     clTransformerFactory.createTransformer("blogHome"),

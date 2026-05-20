@@ -1,24 +1,26 @@
 'use client'
-
 import { useMemo, useState } from 'react'
-
 import { BlogCard } from '../blog/blog-card'
 import { CategoryFilter } from '../blog/category-filter'
+import type { TblogPageSource } from '@repo/middleware/types'
 
-import type {TblogPageSource } from '@repo/middleware/types'
-
-type TProps = {
+type TblogSectionProps = {
   blogs: TblogPageSource
 }
 
-export function BlogSection({ blogs }: TProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+export function BlogSection({
+  blogs,
+}: TblogSectionProps) {
+  const [selectedCategory, setSelectedCategory] =
+    useState<string | null>(null)
 
-  // Generate categories dynamically from blogs
+  /** Categories**/
   const categories = useMemo(() => {
     const laCategories = Array.from(
       new Set(
-        blogs.blogs.map((blog) => blog.blogHeader.category)
+        blogs.blogs.map(
+          (blog) => blog.blogHeader.category
+        )
       )
     )
 
@@ -29,39 +31,59 @@ export function BlogSection({ blogs }: TProps) {
     }))
   }, [blogs])
 
-  // Transform Strapi data
+  /*Posts*/
   const formattedPosts = useMemo(() => {
     return blogs.blogs
   }, [blogs])
 
+  /*Filtered Posts*/
   const filteredPosts = useMemo(() => {
-    if (!selectedCategory) return formattedPosts
+    if (!selectedCategory) {
+      return formattedPosts
+    }
 
-    const category = categories.find(
-      (c) => c.id === selectedCategory
+    const lCategory = categories.find(
+      (category) =>
+        category.id === selectedCategory
     )
 
     return formattedPosts.filter(
-      (post) => post.blogHeader.category === category?.name
+      (post) =>
+        post.blogHeader.category ===
+        lCategory?.name
     )
-  }, [selectedCategory, formattedPosts, categories])
+  }, [
+    selectedCategory,
+    formattedPosts,
+    categories,
+  ])
 
   return (
-<div className="w-full space-y-10 py-10 text-foreground">  
-   <CategoryFilter
-        categories={categories}
-        selectedCategory={selectedCategory || undefined}
-        onCategoryChange={setSelectedCategory}
-      />
+    <section className="w-full py-10 text-foreground">
+      <div className="flex flex-col gap-10">
+        {/* Category Filter */}
+        <CategoryFilter
+          idCategoryFilterProps={{
+            categories,
+            selectedCategory:
+              selectedCategory || undefined,
+            onCategoryChange:
+              setSelectedCategory,
+          }}
+        />
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filteredPosts.map((post) => (
-          <BlogCard
-            key={post.blogHeader.slug}
-            idBlogCardProps={post.blogHeader}
-          />
-        ))}
+        {/* Blog Grid */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {filteredPosts.map((post) => (
+            <BlogCard
+              key={post.blogHeader.slug}
+              idBlogCardProps={
+                post.blogHeader
+              }
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }

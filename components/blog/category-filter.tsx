@@ -2,53 +2,54 @@
 
 import { cn } from '@repo/ui/lib/utils'
 
-type Category = {
-  id: string
-  name: string
-  slug?: string
-}
-
-interface CategoryFilterProps {
-  categories: Category[]
+type TcategoryFilterProps = {
+  categories: {
+    id: string
+    name: string
+    slug?: string
+  }[]
   selectedCategory?: string
   onCategoryChange: (categoryId: string | null) => void
 }
 
 export function CategoryFilter({
-  categories,
-  selectedCategory,
-  onCategoryChange,
-}: CategoryFilterProps) {
-  return (
-    <div className="flex flex-col gap-3">
-      <div className="flex flex-wrap gap-2">
-        <button
-          onClick={() => onCategoryChange(null)}
-          className={cn(
-            'px-3 py-1.5 text-sm font-medium rounded-full transition-colors border',
-            !selectedCategory
-              ? 'bg-accent text-accent-foreground border-accent'
-              : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
-          )}
-        >
-          All
-        </button>
+  idCategoryFilterProps,
+}: {
+  idCategoryFilterProps: TcategoryFilterProps
+}) {
+  const fnGetButtonStyles = (isActive: boolean) =>
+    cn(
+      'px-3 py-1.5 text-sm font-medium rounded-full transition-colors border',
+      isActive
+        ? 'bg-accent text-accent-foreground border-accent'
+        : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
+    )
 
-        {categories.map((category) => (
+  return (
+    <div className="flex flex-wrap gap-2">
+      <button
+        onClick={() => idCategoryFilterProps.onCategoryChange(null)}
+        className={fnGetButtonStyles(!idCategoryFilterProps.selectedCategory)}
+      >
+        All
+      </button>
+       {/* Map through categories and render buttons */}
+      {idCategoryFilterProps.categories.map((category) => {
+        const isActive =
+          idCategoryFilterProps.selectedCategory === category.id
+
+        return (
           <button
             key={category.id}
-            onClick={() => onCategoryChange(category.id)}
-            className={cn(
-              'px-3 py-1.5 text-sm font-medium rounded-full transition-colors border',
-              selectedCategory === category.id
-                ? 'bg-accent text-accent-foreground border-accent'
-                : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
-            )}
+            onClick={() =>
+              idCategoryFilterProps.onCategoryChange(category.id)
+            }
+            className={fnGetButtonStyles(isActive)}
           >
             {category.name}
           </button>
-        ))}
-      </div>
+        )
+      })}
     </div>
   )
 }
