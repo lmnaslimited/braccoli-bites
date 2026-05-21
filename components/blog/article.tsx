@@ -3,13 +3,13 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
 export default function ArticleContent({
-  content,
+  idContent,
 }: {
-  content: string | null;
+  idContent: string | null;
 }) {
-  if (!content) return null;
+  if (!idContent) return null;
 
-  const lCleanContent = content
+  const lCleanContent = idContent
     .replace(/color\s*:\s*black;?/gi, "")
     .replace(/color\s*:\s*#000000;?/gi, "")
     .replace(/color\s*:\s*rgb\(0,\s*0,\s*0\);?/gi, "");

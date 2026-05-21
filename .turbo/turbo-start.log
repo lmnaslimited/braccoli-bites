@@ -4,179 +4,23 @@
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3001
-   - Network:      http://192.168.1.62:3001
+   - Network:      http://10.220.107.80:3001
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 279ms
-CTA Props: [
-  {
-    label: [32m'Subscribe'[39m,
-    variant: [32m'default'[39m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    description: [32m'Enter Your Email '[39m,
-    formMode: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    label: [32m'Subscribe'[39m,
-    variant: [32m'default'[39m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    description: [32m'Enter Your Email '[39m,
-    formMode: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
-CTA Props: [
-  {
-    formMode: [1mnull[22m,
-    href: [1mnull[22m,
-    icon: [1mnull[22m,
-    label: [32m'Subscribe '[39m,
-    variant: [1mnull[22m,
-    __typename: [32m'ComponentCoreButton'[39m
-  }
-]
+ [32m[1m✓[22m[39m Ready in 316ms
+ [31m[1m⨯[22m[39m Error: Meta data not found for blog slug: sample-version-2.0
+    at Module.sk (.next/server/app/[locale]/[slug]/page.js:1:325556) {
+  digest: [32m'459584758'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at sC (.next/server/app/[locale]/[slug]/page.js:1:325717) {
+  digest: [32m'4278677333'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for blog slug: sample-version-04
+    at Module.sk (.next/server/app/[locale]/[slug]/page.js:1:325556) {
+  digest: [32m'4260613302'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at sC (.next/server/app/[locale]/[slug]/page.js:1:325717) {
+  digest: [32m'4278677333'[39m
+}

@@ -1,5 +1,4 @@
 'use client'
-
 import { cn } from '@repo/ui/lib/utils'
 
 type TcategoryFilterProps = {
@@ -12,6 +11,7 @@ type TcategoryFilterProps = {
   onCategoryChange: (categoryId: string | null) => void
 }
 
+// This component renders category filter buttons for the blog section. It receives a list of categories, the currently selected category, and a callback function to handle category changes. The active category button is styled differently to indicate selection.
 export function CategoryFilter({
   idCategoryFilterProps,
 }: {

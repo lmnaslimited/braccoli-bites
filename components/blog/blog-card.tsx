@@ -5,11 +5,7 @@ import { formatDate } from "../../lib/utils/date";
 import { Tblog } from "@repo/middleware/types";
 
 //blog card component to display the blog post in the blog section
-export function BlogCard({
-  idBlogCardProps,
-}: {
-  idBlogCardProps: Tblog;
-}) {
+export function BlogCard({ idBlogCardProps }: { idBlogCardProps: Tblog }) {
   const href = `blog/${idBlogCardProps.slug}`;
 
   return (
@@ -61,14 +57,7 @@ export function BlogCard({
           {/* Footer */}
           <div className="mt-auto flex items-center justify-between border-t border-border/50 pt-4">
             <div className="flex items-center gap-3">
-              <div className="relative h-9 w-9 overflow-hidden rounded-full">
-                {/* <Image
-                  src={idBlogCardProps.authorImage || "/default-avatar.png"}
-                  alt={idBlogCardProps.author}
-                  fill
-                  className="object-cover"
-                /> */}
-              </div>
+              <div className="relative h-9 w-9 overflow-hidden rounded-full"></div>
 
               <div className="flex flex-col gap-1">
                 <p className="text-xs font-semibold text-foreground">
@@ -80,7 +69,6 @@ export function BlogCard({
                 </p>
               </div>
             </div>
-
             <svg
               className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent"
               fill="none"
