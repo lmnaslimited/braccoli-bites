@@ -7,4 +7,176 @@
    - Network:      http://192.168.1.62:3001
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 283ms
+ [32m[1m✓[22m[39m Ready in 279ms
+CTA Props: [
+  {
+    label: [32m'Subscribe'[39m,
+    variant: [32m'default'[39m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    description: [32m'Enter Your Email '[39m,
+    formMode: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    label: [32m'Subscribe'[39m,
+    variant: [32m'default'[39m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    description: [32m'Enter Your Email '[39m,
+    formMode: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]
+CTA Props: [
+  {
+    formMode: [1mnull[22m,
+    href: [1mnull[22m,
+    icon: [1mnull[22m,
+    label: [32m'Subscribe '[39m,
+    variant: [1mnull[22m,
+    __typename: [32m'ComponentCoreButton'[39m
+  }
+]

@@ -4,6 +4,7 @@ import typography from "@tailwindcss/typography";
 
 const webConfig = {
   ...config,
+  darkMode: "class",
   presets: [config],
 
   theme: {

@@ -1,11 +1,21 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
-import { GeistSans } from 'geist/font/sans';
+import { GeistSans } from 'geist/font/sans'
+import { fnGetCacheData } from '../api/strapi/get-data'
+import ChatInit from "../../components/chat-int"
+import Footer from "@repo/ui/components/footer"
+import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import { fnGetCacheData } from "../api/strapi/get-data";
-import { clTransformerFactory } from "@repo/middleware";
-import { Tcontext, TglobalMetaTarget, TseoIcons } from "@repo/middleware/types";
+import { clTransformerFactory } from "@repo/middleware"
+import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+  maximumScale: 5.0,
+  userScalable: true,
+}
 
 async function fnGetGlobalData(locale: string) {
   const context: Tcontext = { locale }
@@ -63,23 +73,44 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       statusBarStyle: data.appleWebAppStatusBarStyle,
     },
     manifest: data.manifest,
-    alternates: {
-      canonical: "https://lmnas.com/en/blog",
-    },
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
+  params,
   children,
 }: Readonly<{
+  params: Promise<{
+    locale: string
+  }>
   children: React.ReactNode
 }>) {
+  const { locale } = await params
+  const context: Tcontext = { locale: locale }
+
+  const footerData: TfooterTarget = await fnGetCacheData(
+    context,
+    clTransformerFactory.createTransformer("footer")
+  )
+
+  const navbarData: TnavbarTarget = await fnGetCacheData(
+    context,
+    clTransformerFactory.createTransformer("navbar")
+  )
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${GeistSans.className} min-h-screen flex flex-col`}>
+      <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <main className="flex-1">{children}</main>
+          <Navbar idNavbar={navbarData} />
+          <main className="">
+            {/* <ClientLayout> */}
+              {children}
+            {/* </ClientLayout> */}
+          </main>
+          <Footer idFooter={footerData} />
         </ThemeProvider>
+        <ChatInit />
       </body>
     </html>
   )

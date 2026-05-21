@@ -17,14 +17,13 @@ export function CategoryFilter({
 }: {
   idCategoryFilterProps: TcategoryFilterProps
 }) {
-  const fnGetButtonStyles = (isActive: boolean) =>
-    cn(
-      'px-3 py-1.5 text-sm font-medium rounded-full transition-colors border',
-      isActive
-        ? 'bg-accent text-accent-foreground border-accent'
-        : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
-    )
-
+const fnGetButtonStyles = (isActive: boolean) =>
+  cn(
+    'rounded-full border px-5 py-2.5 text-base font-medium transition-all',
+    isActive
+      ? 'bg-accent text-accent-foreground border-accent'
+      : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
+  )
   return (
     <div className="flex flex-wrap gap-2">
       <button

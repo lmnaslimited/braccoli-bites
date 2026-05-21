@@ -8,12 +8,12 @@ import { Tblog } from "@repo/middleware/types";
 export function BlogCard({
   idBlogCardProps,
 }: {
-  idBlogCardProps: Tblog["blogHeader"];
+  idBlogCardProps: Tblog;
 }) {
-  // const href = `/${locale}/blog/${slug}`;
+  const href = `blog/${idBlogCardProps.slug}`;
 
   return (
-    <Link href="/">
+    <Link href={href}>
       <article
         className={cn(
           "group relative flex h-full flex-col overflow-hidden rounded-2xl",
@@ -23,11 +23,11 @@ export function BlogCard({
         )}
       >
         {/* Image */}
-        {idBlogCardProps.image && (
+        {idBlogCardProps.blogHeader.image && (
           <div className="relative aspect-video overflow-hidden bg-muted">
             <Image
-              src={idBlogCardProps.image}
-              alt={idBlogCardProps.blogTitle}
+              src={idBlogCardProps.blogHeader.image}
+              alt={idBlogCardProps.blogHeader.blogTitle}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
@@ -39,7 +39,7 @@ export function BlogCard({
           {/* Category */}
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-              {idBlogCardProps.category}
+              {idBlogCardProps.blogHeader.category}
             </span>
           </div>
 
@@ -50,12 +50,12 @@ export function BlogCard({
               "text-foreground transition-colors duration-300",
             )}
           >
-            {idBlogCardProps.blogTitle}
+            {idBlogCardProps.blogHeader.blogTitle}
           </h3>
 
           {/* Description */}
           <p className="line-clamp-2 text-sm text-muted-foreground/80 md:text-base">
-            {idBlogCardProps.blogExert}
+            {idBlogCardProps.blogHeader.blogExert}
           </p>
 
           {/* Footer */}
@@ -72,11 +72,11 @@ export function BlogCard({
 
               <div className="flex flex-col gap-1">
                 <p className="text-xs font-semibold text-foreground">
-                  {idBlogCardProps.author}
+                  {idBlogCardProps.blogHeader.author}
                 </p>
 
                 <p className="text-xs text-muted-foreground">
-                  {formatDate(idBlogCardProps.publishingDate || "")}
+                  {formatDate(idBlogCardProps.blogHeader.publishingDate || "")}
                 </p>
               </div>
             </div>

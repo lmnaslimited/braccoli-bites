@@ -1,63 +1,61 @@
-// 'use client'
 import { fnGetCacheData } from "../api/strapi/get-data";
-import Footer from "@repo/ui/components/footer";
-import Navbar from "@repo/ui/components/navbar";
 import { clTransformerFactory } from "@repo/middleware";
 import { fnGetStatus } from "@/lib/utils/get-status";
-// import TitleSubtitle from "@repo/ui/components/title-subtitle";
-import {
-  TblogPageTarget,
-  Tcontext,
-  TfooterTarget,
-  TnavbarTarget,
-} from "@repo/middleware/types";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import { NewsletterSubscription } from "@/components/subscription";
 import { BlogSection } from "../../components/blog-sections/blog-section";
 import { Hero } from "../ui/hero";
 
-export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const LdContext: Tcontext = { locale: locale };
+import { TblogPageTarget, Tcontext } from "@repo/middleware/types";
+
+async function fnGetBlogPageData(params: { locale: string }) {
+  const { locale } = params;
 
   const LStatus = await fnGetStatus();
-  // Context for Blog Page - includes locale and status for fetching blog-specific data
+
   const LdBlogcontext: Tcontext = {
-    locale: locale,
+    locale,
     status: LStatus,
     blogsLocale2: locale,
     blogsStatus2: LStatus,
   };
 
-  const LdfooterData: TfooterTarget = await fnGetCacheData(
-    LdContext,
-    clTransformerFactory.createTransformer("footer"),
-  );
-  // Fetching blog home data using the blog-specific context to ensure we get the correct localized and status-filtered content
-  const LdblogHomeData: TblogPageTarget = await fnGetCacheData(
+  const pageData: TblogPageTarget = await fnGetCacheData(
     LdBlogcontext,
     clTransformerFactory.createTransformer("blogHome"),
   );
 
-  const LdnavbarData: TnavbarTarget = await fnGetCacheData(
-    LdContext,
-    clTransformerFactory.createTransformer("navbar"),
-  );
+  return pageData;
+}
 
-  const featuredBlog =
-  LdblogHomeData.blogs.find(
-    (blog) => blog.featuredBlog
-  )
-  console.log(LdblogHomeData.blogs)
+export default async function Blog({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const pageData = await fnGetBlogPageData(await params);
+
+  const featuredBlog = pageData.blogs.find((blog) => blog.featuredBlog);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar idNavbar={LdnavbarData} />
       <section className="border-b border-border/40 bg-background py-20 text-foreground transition-colors duration-300">
         <div className="container mx-auto px-4 md:px-6">
-          <Hero idProps={LdblogHomeData}   featuredBlog={featuredBlog} />
-          <BlogSection blogs={LdblogHomeData} />
-          {/* <TitleSubtitle idTitle={HeroData.heading} /> */}
+          <Hero idProps={pageData} featuredBlog={featuredBlog} />
+
+          <BlogSection blogs={pageData} />
+
+          <div className="mx-auto mt-28 flex flex-col items-center px-6 py-8 md:px-14">
+            <div className="max-w-2xl text-center">
+              <TitleSubtitle idTitle={pageData.blogHome.ctaSection} />
+            </div>
+
+            <div className="w-full max-w-2xl">
+              <NewsletterSubscription idProps={pageData.blogHome.ctaSection} />
+            </div>
+          </div>
         </div>
       </section>
-      <Footer idFooter={LdfooterData} />
     </div>
   );
 }

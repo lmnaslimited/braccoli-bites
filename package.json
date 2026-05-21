@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@n8n/chat": "^0.67.0",
     "@repo/middleware": "workspace:*",
     "@repo/ui": "workspace:*",
     "@tailwindcss/typography": "^0.5.19",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.474.0",
     "next": "15.1.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
