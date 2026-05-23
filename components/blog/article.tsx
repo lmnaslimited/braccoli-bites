@@ -9,10 +9,10 @@ export default function ArticleContent({
 }) {
   if (!idContent) return null;
 
-  const lCleanContent = idContent
-    .replace(/color\s*:\s*black;?/gi, "")
-    .replace(/color\s*:\s*#000000;?/gi, "")
-    .replace(/color\s*:\s*rgb\(0,\s*0,\s*0\);?/gi, "");
+  // const LCleanContent = idContent
+  //   .replace(/color\s*:\s*black;?/gi, "")
+  //   .replace(/color\s*:\s*#000000;?/gi, "")
+  //   .replace(/color\s*:\s*rgb\(0,\s*0,\s*0\);?/gi, "");
 
   return (
       <div className="mx-auto max-w-4xl">
@@ -30,7 +30,7 @@ export default function ArticleContent({
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
       >
-        {lCleanContent}
+        {idContent}
       </Markdown>
     </article>
     </div>

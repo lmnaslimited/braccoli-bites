@@ -6,12 +6,12 @@ import { TblogPageTarget } from "@repo/middleware/types";
 
 export function Hero({
   idProps,
-  featuredBlog,
+  idFeaturedBlog,
 }: {
   idProps: TblogPageTarget;
-  featuredBlog?: TblogPageTarget["blogs"][0];
+  idFeaturedBlog?: TblogPageTarget["blogs"][0];
 }) {
-  if (!featuredBlog) {
+  if (!idFeaturedBlog) {
     return null;
   }
 
@@ -57,7 +57,7 @@ export function Hero({
       </div>
 
       {/* Featured Card */}
-      <Link href={`blog/${featuredBlog.slug}`}>
+      <Link href={`blog/${idFeaturedBlog.slug}`}>
         <article
           className={cn(
             "group relative overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl"
@@ -75,18 +75,18 @@ export function Hero({
                 {/* Category */}
                 <div className="inline-flex w-fit items-center rounded-full border border-border/50 bg-muted/50 px-4 py-1.5 backdrop-blur-sm">
                   <span className="text-sm font-medium text-foreground/80">
-                    {featuredBlog.blogHeader.category}
+                    {idFeaturedBlog.blogHeader.category}
                   </span>
                 </div>
 
                 {/* Title + Excerpt */}
                 <div className="space-y-4">
                   <h2 className="text-2xl font-black leading-tight tracking-tight transition-all duration-300 group-hover:text-primary md:text-4xl lg:text-5xl">
-                    {featuredBlog.blogHeader?.blogTitle}
+                    {idFeaturedBlog.blogHeader?.blogTitle}
                   </h2>
 
                   <p className="text-sm leading-relaxed text-muted-foreground md:text-base lg:text-lg line-clamp-3">
-                    {featuredBlog.blogHeader?.blogExert}
+                    {idFeaturedBlog.blogHeader?.blogExert}
                   </p>
                 </div>
               </div>
@@ -96,14 +96,14 @@ export function Hero({
                 {/* Author */}
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border/60 bg-muted text-base font-bold">
-                    {featuredBlog.blogHeader?.author?.charAt(0) || "A"}
+                    {idFeaturedBlog.blogHeader?.author?.charAt(0) || "A"}
                   </div>
                   <div className="flex flex-col">
                     <span className="font-semibold text-foreground text-sm md:text-base">
-                      {featuredBlog.blogHeader?.author || "Anonymous"}
+                      {idFeaturedBlog.blogHeader?.author || "Anonymous"}
                     </span>
                     <span className="text-xs text-muted-foreground md:text-sm">
-                      {featuredBlog.blogHeader?.publishingDate || "No date"}
+                      {idFeaturedBlog.blogHeader?.publishingDate || "No date"}
                     </span>
                   </div>
                 </div>
@@ -118,8 +118,8 @@ export function Hero({
             {/* Image — right side, stretches to full card height */}
             <div className="relative lg:w-[45%] min-h-[260px] lg:min-h-0">
               <Image
-                src={featuredBlog.blogHeader?.image || ""}
-                alt={featuredBlog.blogHeader?.blogTitle || "Featured blog"}
+                src={idFeaturedBlog.blogHeader?.image || ""}
+                alt={idFeaturedBlog.blogHeader?.blogTitle || "Featured blog"}
                 fill
                 priority
                 className="object-cover transition-transform duration-700 group-hover:scale-105"

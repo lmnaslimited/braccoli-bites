@@ -6,24 +6,26 @@ import { CategoryFilter } from "../blog/category-filter";
 import type { TblogPageSource } from "@repo/middleware/types";
 
 type TblogSectionProps = {
-  blogs: TblogPageSource;
+blogs: TblogPageSource;
 };
 // This component renders the blog section on the blog homepage. It includes a category filter, a grid of blog cards, and pagination controls. The category filter allows users to filter blog posts by category, and the pagination controls allow users to navigate through multiple pages of blog posts.
 
 export function BlogSection({ blogs }: TblogSectionProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [LSelectedCategory, fnSetSelectedCategory] = useState<string | null>(
+    null,
+  );
+  const [LCurrentPage, fnSetCurrentPage] = useState(1);
 
   /// Constants per page for pagination
-  const POSTS_PER_PAGE = 3;
+  const POSTS_PER_PAGE = 6;
 
   /** Categories **/
   const Lcategories = useMemo(() => {
-    const laCategories = Array.from(
+    const LaCategories = Array.from(
       new Set(blogs.blogs.map((blog) => blog.blogHeader.category)),
     );
 
-    return laCategories.map((category) => ({
+    return LaCategories.map((category) => ({
       id: category.toLowerCase(),
       name: category,
       slug: category.toLowerCase(),
@@ -37,25 +39,25 @@ export function BlogSection({ blogs }: TblogSectionProps) {
 
   /** Filtered Posts **/
   const LdfilteredPosts = useMemo(() => {
-    if (!selectedCategory) {
+    if (!LSelectedCategory) {
       return LdformattedPosts;
     }
 
-    const lCategory = Lcategories.find(
-      (category) => category.id === selectedCategory,
+    const LCategory = Lcategories.find(
+      (category) => category.id === LSelectedCategory,
     );
 
     return LdformattedPosts.filter(
-      (post) => post.blogHeader.category === lCategory?.name,
+      (post) => post.blogHeader.category === LCategory?.name,
     );
-  }, [selectedCategory, LdformattedPosts, Lcategories]);
+  }, [LSelectedCategory, LdformattedPosts, Lcategories]);
 
   /** Pagination **/
   // Calculate total pages and slice the filtered posts for the current page
   const LtotalPages = Math.ceil(LdfilteredPosts.length / POSTS_PER_PAGE);
   const LdpaginatedPosts = LdfilteredPosts.slice(
-    (currentPage - 1) * POSTS_PER_PAGE,
-    currentPage * POSTS_PER_PAGE,
+    (LCurrentPage - 1) * POSTS_PER_PAGE,
+    LCurrentPage * POSTS_PER_PAGE,
   );
 
   return (
@@ -65,10 +67,10 @@ export function BlogSection({ blogs }: TblogSectionProps) {
         <CategoryFilter
           idCategoryFilterProps={{
             categories: Lcategories,
-            selectedCategory: selectedCategory || undefined,
+            selectedCategory: LSelectedCategory || undefined,
             onCategoryChange: (category) => {
-              setSelectedCategory(category);
-              setCurrentPage(1);
+              fnSetSelectedCategory(category);
+              fnSetCurrentPage(1);
             },
           }}
         />
@@ -85,10 +87,10 @@ export function BlogSection({ blogs }: TblogSectionProps) {
           {Array.from({ length: LtotalPages }, (_, index) => (
             <button
               key={index + 1}
-              onClick={() => setCurrentPage(index + 1)}
+              onClick={() => fnSetCurrentPage(index + 1)}
               className={cn(
                 "flex h-9 w-9 items-center justify-center rounded-md border text-sm transition-colors",
-                currentPage === index + 1
+                LCurrentPage === index + 1
                   ? "bg-foreground text-background"
                   : "border-border bg-background text-foreground hover:bg-muted",
               )}

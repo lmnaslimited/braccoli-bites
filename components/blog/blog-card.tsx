@@ -6,10 +6,10 @@ import { Tblog } from "@repo/middleware/types";
 
 //blog card component to display the blog post in the blog section
 export function BlogCard({ idBlogCardProps }: { idBlogCardProps: Tblog }) {
-  const href = `blog/${idBlogCardProps.slug}`;
+  const LHref = `blog/${idBlogCardProps.slug}`;
 
   return (
-    <Link href={href}>
+    <Link href={LHref}>
       <article
         className={cn(
           "group relative flex h-full flex-col overflow-hidden rounded-2xl",

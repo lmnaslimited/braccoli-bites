@@ -52,44 +52,45 @@ export default async function Blog({
   }>;
 }) {
   const LdblogArticleData = await fnGetBlogArticleData(await params);
-    const jsonLd = LdblogArticleData.blogs[0]?.metaData.schemaData;
+  const Ldjson = LdblogArticleData.blogs[0]?.metaData.schemaData;
 
-  return (<>
-    <div className="min-h-auto bg-background text-foreground">
-      <section className="bg-background py-20 text-foreground transition-colors duration-300">
-        <div className="container mx-auto px-4 md:px-6">
-          <ArticleHero idArticle={LdblogArticleData} />
+  return (
+    <>
+      <div className="min-h-auto bg-background text-foreground">
+        <section className="bg-background py-20 text-foreground transition-colors duration-300">
+          <div className="container mx-auto px-4 md:px-6">
+            <ArticleHero idArticle={LdblogArticleData} />
 
-          <ArticleContent
-            idContent={LdblogArticleData.blogs[0]?.blogContent || ""}
-          />
+            <ArticleContent
+              idContent={LdblogArticleData.blogs[0]?.blogContent || ""}
+            />
 
-          {LdblogArticleData.blogs[0]?.ctasection && (
-            <div className="mx-auto mt-28 flex flex-col items-center px-6 py-8 md:px-14">
-              <div className="max-w-2xl text-center">
-                <TitleSubtitle
-                  idTitle={LdblogArticleData.blogs[0]?.ctasection}
-                />
+            {LdblogArticleData.blogs[0]?.ctasection && (
+              <div className="mx-auto mt-28 flex flex-col items-center px-6 py-8 md:px-14">
+                <div className="max-w-2xl text-center">
+                  <TitleSubtitle
+                    idTitle={LdblogArticleData.blogs[0]?.ctasection}
+                  />
+                </div>
+
+                <div className="w-full max-w-2xl">
+                  <NewsletterSubscription
+                    idProps={LdblogArticleData.blogs[0]?.ctasection}
+                  />
+                </div>
               </div>
-
-              <div className="w-full max-w-2xl">
-                <NewsletterSubscription
-                  idProps={LdblogArticleData.blogs[0]?.ctasection}
-                />
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-    </div>
-          {jsonLd && (
+            )}
+          </div>
+        </section>
+      </div>
+      {Ldjson && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(Ldjson, null, 2).replace(/</g, "\\u003c"),
           }}
         />
       )}
-      </>
+    </>
   );
 }

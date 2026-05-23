@@ -42,14 +42,14 @@ export default async function Blog({
 }) {
   const LdPageData = await fnGetBlogPageData(await params);
 
-  const featuredBlog = LdPageData.blogs.find((blog) => blog.featuredBlog);
-  const jsonLd = LdPageData.blogHome.metaData.schemaData;
+  const LdfeaturedBlog = LdPageData.blogs.find((idBlog) => idBlog.featuredBlog);
+  const Ldjson = LdPageData.blogHome.metaData.schemaData;
   return (
     <>
       <div className="min-h-screen bg-background text-foreground">
         <section className="border-b border-border/40 bg-background py-20 text-foreground transition-colors duration-300">
           <div className="container mx-auto px-4 md:px-6">
-            <Hero idProps={LdPageData} featuredBlog={featuredBlog} />
+            <Hero idProps={LdPageData} idFeaturedBlog={LdfeaturedBlog} />
             <BlogSection blogs={LdPageData} />
             <div className="mx-auto mt-28 flex flex-col items-center px-6 py-8 md:px-14">
               <div className="max-w-2xl text-center">
@@ -64,11 +64,11 @@ export default async function Blog({
           </div>
         </section>
       </div>
-      {jsonLd && (
+      {Ldjson && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(Ldjson, null, 2).replace(/</g, "\\u003c"),
           }}
         />
       )}
