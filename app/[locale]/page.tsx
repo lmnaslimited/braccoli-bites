@@ -19,11 +19,11 @@ async function fnGetBlogPageData(params: { locale: string }) {
     blogsStatus2: LStatus,
   };
 
-  const pageData: TblogPageTarget = await fnGetCacheData(
+  const LdPageData: TblogPageTarget = await fnGetCacheData(
     LdBlogcontext,
     clTransformerFactory.createTransformer("blogHome"),
   );
-  return pageData;
+  return LdPageData;
 }
 
 export async function generateMetadata({
