@@ -44,18 +44,18 @@ export function BlogSection({ blogs }: TblogSectionProps) {
     }
 
     const LCategory = Lcategories.find(
-      (category) => category.id === LSelectedCategory,
+      (idCategory) => idCategory.id === LSelectedCategory,
     );
 
     return LdformattedPosts.filter(
-      (post) => post.blogHeader.category === LCategory?.name,
+      (idPost) => idPost.blogHeader.category === LCategory?.name,
     );
   }, [LSelectedCategory, LdformattedPosts, Lcategories]);
 
   /** Pagination **/
   // Calculate total pages and slice the filtered posts for the current page
-  const LtotalPages = Math.ceil(LdfilteredPosts.length / POSTS_PER_PAGE);
-  const LdpaginatedPosts = LdfilteredPosts.slice(
+  const LTotalPages = Math.ceil(LdfilteredPosts.length / POSTS_PER_PAGE);
+  const LdPaginatedPosts = LdfilteredPosts.slice(
     (LCurrentPage - 1) * POSTS_PER_PAGE,
     LCurrentPage * POSTS_PER_PAGE,
   );
@@ -77,14 +77,14 @@ export function BlogSection({ blogs }: TblogSectionProps) {
 
         {/* Blog Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {LdpaginatedPosts.map((post) => (
-            <BlogCard key={post.slug} idBlogCardProps={post} />
+          {LdPaginatedPosts.map((idPost) => (
+            <BlogCard key={idPost.slug} idBlogCardProps={idPost} />
           ))}
         </div>
 
         {/* Pagination */}
         <div className="flex items-center justify-center gap-2 pt-6">
-          {Array.from({ length: LtotalPages }, (_, index) => (
+          {Array.from({ length: LTotalPages }, (_, index) => (
             <button
               key={index + 1}
               onClick={() => fnSetCurrentPage(index + 1)}
