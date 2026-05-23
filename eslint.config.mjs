@@ -10,6 +10,14 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  {
+    ignores: [
+      "app/ui/**",
+      "hooks/**",
+      "components/theme-provider.tsx",
+      "components/theme-toggle.tsx",
+    ],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 
