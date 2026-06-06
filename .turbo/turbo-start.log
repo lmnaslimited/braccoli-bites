@@ -1,26 +1,10 @@
 
-> blog@0.1.0 start /home/yuvaraj/Desktop/lmnas-turbo/apps/braccoli-bites
+> blog@0.1.0 start /home/tyro23006/lmnas-turbo/apps/braccoli-bites
 > next start -p 3001
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3001
-   - Network:      http://10.220.107.80:3001
+   - Network:      http://192.168.1.52:3001
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 316ms
- [31m[1m⨯[22m[39m Error: Meta data not found for blog slug: sample-version-2.0
-    at Module.sk (.next/server/app/[locale]/[slug]/page.js:1:325556) {
-  digest: [32m'459584758'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at sC (.next/server/app/[locale]/[slug]/page.js:1:325717) {
-  digest: [32m'4278677333'[39m
-}
- [31m[1m⨯[22m[39m Error: Meta data not found for blog slug: sample-version-04
-    at Module.sk (.next/server/app/[locale]/[slug]/page.js:1:325556) {
-  digest: [32m'4260613302'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at sC (.next/server/app/[locale]/[slug]/page.js:1:325717) {
-  digest: [32m'4278677333'[39m
-}
+ [32m[1m✓[22m[39m Ready in 273ms

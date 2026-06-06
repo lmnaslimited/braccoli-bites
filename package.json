@@ -15,6 +15,8 @@
     "@tailwindcss/typography": "^0.5.19",
     "clsx": "^2.1.1",
     "lucide-react": "^0.474.0",
+    "posthog-js": "^1.372.10",
+    "posthog-node": "^5.33.4",
     "next": "15.1.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
