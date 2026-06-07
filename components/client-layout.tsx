@@ -4,6 +4,7 @@ import posthog from "posthog-js";
 import { useEffect } from "react";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
+    // Initializing PostHog
     useEffect(() => {
         posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
             api_host: "/ingest",
