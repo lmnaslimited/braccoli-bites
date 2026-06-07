@@ -15,6 +15,8 @@ import {
   TnavbarTarget,
   TseoIcons,
 } from "@repo/middleware/types";
+import NewsletterIdentifyListener from "@/components/newsletter-identify-listener";
+import ClientLayout from "@/components/client-layout";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -120,12 +122,13 @@ export default async function RootLayout({
         >
           <Navbar idNavbar={LdnavbarData} />
           <main className="">
-            {/* <ClientLayout> */}
+            <ClientLayout>
             {children}
-            {/* </ClientLayout> */}
+            </ClientLayout>
           </main>
           <Footer idFooter={LdfooterData} />
         </ThemeProvider>
+        <NewsletterIdentifyListener />
         <ChatInit />
       </body>
     </html>
