@@ -2,7 +2,7 @@ import { fnGetCacheData } from "../api/strapi/get-data";
 import { clTransformerFactory } from "@repo/middleware";
 import { fnGetStatus } from "@/lib/utils/get-status";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
-import { NewsletterSubscription } from "@/components/subscription";
+import { NewsletterSubscription } from "@repo/ui/components/subscription";
 import { BlogSection } from "../../components/blog-sections/blog-section";
 import { Hero } from "../ui/hero";
 import { TblogPageTarget, Tcontext } from "@repo/middleware/types";
@@ -56,9 +56,21 @@ export default async function Blog({
                 <TitleSubtitle idTitle={LdPageData.blogHome.ctaSection} />
               </div>
               <div className="w-full max-w-2xl">
-                <NewsletterSubscription
-                  idProps={LdPageData.blogHome.ctaSection}
-                />
+              <section className="w-full py-6">
+              <div className="container mx-auto px2 md:px-6">
+                <div className="mx-auto w-full max-w-2xl ">
+                  <div className="space-y-6 text-center m-0">
+                  <NewsletterSubscription
+                    placeholder={LdPageData.blogHome.ctaSection.buttons[0]?.description ?? ""}
+                    buttonLabel={LdPageData.blogHome.ctaSection.buttons[0]?.label ?? ""}
+                    buttonPendingLabel={String(LdPageData.blogHome.ctaSection.buttons[0]?.icon) ?? ""}
+                    variant="lg"
+                    source="blog-home"
+                  />
+                </div>
+                </div>
+                </div>
+                </section>
               </div>
             </div>
           </div>
