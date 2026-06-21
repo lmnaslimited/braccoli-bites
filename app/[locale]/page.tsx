@@ -2,7 +2,7 @@ import { fnGetCacheData } from "../api/strapi/get-data";
 import { clTransformerFactory } from "@repo/middleware";
 import { fnGetStatus } from "@/lib/utils/get-status";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
-import { NewsletterSubscription } from "@repo/ui/components/subscription";
+import { NewsletterSubscriptionForm } from "@repo/ui/components/subscription";
 import { BlogSection } from "../../components/blog-sections/blog-section";
 import { Hero } from "../ui/hero";
 import { TblogPageTarget, Tcontext } from "@repo/middleware/types";
@@ -60,7 +60,7 @@ export default async function Blog({
               <div className="container mx-auto px2 md:px-6">
                 <div className="mx-auto w-full max-w-2xl ">
                   <div className="space-y-6 text-center m-0">
-                  <NewsletterSubscription
+                  <NewsletterSubscriptionForm
                     placeholder={LdPageData.blogHome.ctaSection.buttons[0]?.description ?? ""}
                     buttonLabel={LdPageData.blogHome.ctaSection.buttons[0]?.label ?? ""}
                     buttonPendingLabel={String(LdPageData.blogHome.ctaSection.buttons[0]?.icon) ?? ""}
