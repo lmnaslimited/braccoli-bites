@@ -17,6 +17,7 @@ import {
 } from "@repo/middleware/types";
 import NewsletterIdentifyListener from "@/components/newsletter-identify-listener";
 import ClientLayout from "@/components/client-layout";
+import AppRecaptchaProvider from "@repo/ui/components/recaptcha-provider";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -120,6 +121,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+           <AppRecaptchaProvider>
           <Navbar idNavbar={LdnavbarData} />
           <main className="">
             <ClientLayout>
@@ -127,6 +129,7 @@ export default async function RootLayout({
             </ClientLayout>
           </main>
           <Footer idFooter={LdfooterData} />
+          </AppRecaptchaProvider>
         </ThemeProvider>
         <NewsletterIdentifyListener />
         <ChatInit />

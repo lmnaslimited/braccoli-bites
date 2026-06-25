@@ -6,7 +6,7 @@ import ArticleContent from "@/components/blog/article";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import ArticleHero from "@/components/blog/article-hero";
 import { TblogArticleTarget, Tcontext } from "@repo/middleware/types";
-import { NewsletterSubscription } from "@repo/ui/components/subscription"
+import { NewsletterSubscriptionForm } from "@repo/ui/components/subscription"
 import { getPageMetadata } from "@/lib/utils/metadata/page-metadata";
 import type { Metadata } from "next";
 async function fnGetBlogArticleData(params: { locale: string; slug: string }) {
@@ -79,7 +79,7 @@ export default async function Blog({
                 <div className="container mx-auto px2 md:px-6">
                   <div className="mx-auto w-full max-w-2xl ">
                     <div className="space-y-6 text-center m-0">
-                  <NewsletterSubscription
+                  <NewsletterSubscriptionForm
                     placeholder={LdblogArticleData.blogs[0]?.ctasection.buttons[0]?.description ?? ""}
                     buttonLabel={LdblogArticleData.blogs[0]?.ctasection.buttons[0]?.label ?? ""}
                     buttonPendingLabel={String(LdblogArticleData.blogs[0]?.ctasection.buttons[0]?.icon) ?? ""}
