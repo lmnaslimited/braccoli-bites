@@ -17,6 +17,7 @@ async function fnGetBlogPageData(params: { locale: string }) {
     status: LStatus,
     blogsLocale2: locale,
     blogsStatus2: LStatus,
+    pagination: { limit: 20 } //temp value of 20 records
   };
 
   const LdPageData: TblogPageTarget = await fnGetCacheData(
