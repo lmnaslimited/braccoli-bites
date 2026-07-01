@@ -17,6 +17,7 @@ import {
 } from "@repo/middleware/types";
 import NewsletterIdentifyListener from "@/components/newsletter-identify-listener";
 import ClientLayout from "@/components/client-layout";
+import { AuthProvider } from "@repo/ui/components/auth/authContext";
 import AppRecaptchaProvider from "@repo/ui/components/recaptcha-provider";
 
 export const viewport: Viewport = {
@@ -115,6 +116,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
+      <AuthProvider>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -133,6 +135,7 @@ export default async function RootLayout({
         </ThemeProvider>
         <NewsletterIdentifyListener />
         <ChatInit />
+        </AuthProvider>
       </body>
     </html>
   );
